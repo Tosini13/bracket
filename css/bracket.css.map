@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": "AAEA,AAAA,iBAAiB,CAAC;EAChB,OAAO,EAAE,IAAI;CAgBd;;AAjBD,AAGI,iBAHa,CAEf,OAAO,GACD,EAAE,CAAC;EACL,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,GAAG;EACnB,cAAc,EAAE,SAAS;EACzB,eAAe,EAAE,aAAa;EAC9B,MAAM,EAAE,QAAQ;EAChB,UAAU;EACV,MAAM,EAAE,eAAe;CACxB;;AAXL,AAYI,iBAZa,CAEf,OAAO,CAUL,QAAQ,CAAC;EACP,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,MAAM;CACvB",
+    "sources": [
+        "bracket.scss",
+        "_constants.scss"
+    ],
+    "names": [],
+    "file": "bracket.css"
+}
