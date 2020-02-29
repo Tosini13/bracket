@@ -5,8 +5,12 @@ body {
   color: $color;
   max-width: 980px;
   width: 100%;
-  overflow: hidden;
   margin: 0px auto;
+}
+
+hr {
+  border: none;
+  border-top: black solid 1px;
 }
 
 a {
@@ -28,19 +32,24 @@ ul {
 .button {
   background-color: transparent;
   border: black solid 1px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7);
+  box-shadow: 0 3px black;
   color: $color;
   border-radius: 4px;
   padding: 5px;
   text-align: center;
 }
 
+.clickedButton {
+  border: $color solid 1px;
+  box-shadow: 0 3px $color;
+}
+
 section {
   width: 100%;
-  overflow: hidden;
+  // overflow: hidden;
   box-sizing: border-box;
   margin: 10px 0px;
-  padding: 2px 5px 10px 5px;
+  padding: 0px 5px 5px 5px;
 }
 
 select,
@@ -111,11 +120,18 @@ input:focus {
     & > ul {
       display: flex;
       flex-direction: row;
+      flex-wrap: wrap;
       text-transform: uppercase;
-      justify-content: space-between;
-      margin: 10px 0px;
-      /* temp */
-      border: white solid 1px;
+      justify-content: space-around;
+      & > li {
+        margin: 10px 0px;
+      }
+    }
+    & > .bracket {
+      flex-direction: column;
+      & > li {
+        margin-bottom: 30px;
+      }
     }
     .table {
       table {
@@ -123,7 +139,6 @@ input:focus {
         max-width: 100%;
         width: 100%;
         table-layout: fixed;
-        // border: white solid 1px;
         td,
         th {
           overflow: hidden;

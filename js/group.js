@@ -1,12 +1,16 @@
 function stratBracket() {
-    var tournament = new Tournament(8, false);
+    var bracketNo = document.getElementsByName('play_offs')[0].value;
+    var tournament = new Tournament(bracketNo, false);
     tournament.createWinnerBracket();
-    var arr = tournament.showWinnerBracket(tournament.finalMatch, 8);
+    var arr = tournament.getWinnerBracket(tournament.finalMatch);
     //console.log(arr.length);
-    arr = tournament.bracketFilter(arr, 2);
+    arr = tournament.bracketFilter(arr, 0);
     console.log(arr.length);
     for (let item of arr) {
         console.log(item.name);
+        for (let match of item.matches) {
+            console.log(match.home.name + ' vs ' + match.away.name);
+        }
     }
 }
 

@@ -28,4 +28,12 @@
       -ms-flex-direction: column;
           flex-direction: column;
 }
+
+#dashboardBracket .stages .bracket > li a {
+  border: white solid 1px;
+}
+
+#dashboardBracket .stages .bracket > li > ul {
+  border: white solid 1px;
+}
 /*# sourceMappingURL=bracket.css.map */

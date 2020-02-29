@@ -147,8 +147,8 @@ class Match {
     away = null;
     mode = null; //0-not_tarted;1-started;2-finished
     result = {
-        home: null,
-        away: null,
+        home: "",
+        away: "",
     }; //[0]-home;[1]-away
 
     startMatch() {

@@ -15,6 +15,15 @@
     .bracket {
       display: flex;
       flex-direction: column;
+      & > li {
+        a {
+          border: white solid 1px;
+        }
+        & > ul {
+          border: white solid 1px;
+        }
+      }
+      
     }
   }
 }
