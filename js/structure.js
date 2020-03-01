@@ -84,7 +84,6 @@ class Tournament {
     getWinnerBracket(higher) {  //pass final at first!
         let arr = [];
         arr.push(higher);
-        //console.log(higher.name + ': ' + higher.matches[0].home.name + ' vs ' + higher.matches[0].away.name);
         if (typeof higher.previousStage['home'] !== 'undefined') {
             arr = arr.concat(this.getWinnerBracket(higher.previousStage['home']));
         }
@@ -128,9 +127,39 @@ class Tournament {
 class Bracket {
     round = null;       //1/2/4/8/16
     name = null;
-    matches = [];       // 1 or 2
+    matches = [];       // if returnMatch
     nextStage = [];     //keys -> 'winner' and 'loser'; array of Brackets
     previousStage = []; //keys -> 'home' and 'away'; array of Brackets
+
+    lastMatchesDidFinished() {
+        let finished = true;
+        if (typeof this.previousStage['home'] !== 'undefined' && typeof this.previousStage['away'] !== 'undefined') {
+            console.log('this match: ' + this.name + ' = ' + this.matches[0].home.name + ' - ' + this.matches[0].away.name + ' mode: ' + this.mode);
+            console.log(this.previousStage['home'].matches);
+            // console.log(this.previousStage['home'].matches[0].home.mode);
+            // console.log(this.previousStage['home'].matches[0].mode);
+
+            for (let key in this.previousStage) {
+                console.log('previousStage: ' + this.previousStage[key].name);
+                for (let match of this.previousStage[key].matches) {
+                    console.log(match);
+                    console.log('match: ' + match.home.name + ' - ' + match.away.name + ' mode: ' + match.mode);
+                    if (match.mode != 2) {
+                        finished = false;
+                        console.log('Nie zaliczone:');
+                    } else {
+                        console.log('Zaliczone:');
+                    }
+                    console.log(': ' + match.mode);
+                }
+            }
+        } else {
+            console.log('Nie ma poprzednich meczów');
+            return true;
+        }
+
+        return finished;
+    };
 
     constructor() {
         // this.nextStage['winner'] = null;
@@ -140,12 +169,11 @@ class Bracket {
     }
 }
 
-
 class Match {
     id;             //#bracket? but I have already keys in table!
     home = null;
     away = null;
-    mode = null; //0-not_tarted;1-started;2-finished
+    mode = 0; //0-not_tarted;1-started;2-finished
     result = {
         home: "",
         away: "",

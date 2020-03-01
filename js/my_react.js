@@ -82,22 +82,26 @@ class MatchShow extends React.Component {
 
 
     startMatch() {
-        let match = this.state.match;
-        if (this.state.match.mode == 2) {
-            this.state.match.mode = 1;
-            console.log('ten mecz już się zakończył! Ale wznawiam');
-        } else if (this.state.match.mode == 1) {
-            match.mode = 2;
-            console.log('ten mecz jest już rozpoczęty');
-        } else if (this.state.match.mode == 0) {
-            match.mode = 1;
-            match.result.home = 0;
-            match.result.away = 0;
-            //this.setState({ goalHome: 0 });
-            //this.setState({ goalAway: 0 });
-            console.log('Rozpoczynam mecz');
+        if (this.props.prevFinished) {
+            let match = this.state.match;
+            if (this.state.match.mode == 2) {
+                this.state.match.mode = 1;
+                console.log('ten mecz już się zakończył! Ale wznawiam');
+            } else if (this.state.match.mode == 1) {
+                match.mode = 2;
+                console.log('ten mecz jest już rozpoczęty');
+            } else if (this.state.match.mode == 0) {
+                match.mode = 1;
+                match.result.home = 0;
+                match.result.away = 0;
+                //this.setState({ goalHome: 0 });
+                //this.setState({ goalAway: 0 });
+                console.log('Rozpoczynam mecz');
+            }
+            this.setState({ match: match });
+        } else {
+            console.log('Poprzednie mecze jeszcze się nie zakończyły');
         }
-        this.setState({ match: match });
     }
 
     addHomeGoal() {
@@ -189,16 +193,18 @@ class MatchShow extends React.Component {
 // FOR BRACKETS
 
 class BracketShow extends React.Component {
+
     //show whole
     //show only round and arrow to next
     render() {
         this.brackets = this.props.stageFiltered.map((item, key) =>
             <li className='matches'>
                 <hr />
+
                 <a>{item.name}</a>
                 <ul>
                     {this.matches = item.matches.map((match, k) =>
-                        <li><MatchShow match={match} rights={this.props.rights} /></li>
+                        <li><MatchShow match={match} rights={this.props.rights} prevFinished={item.lastMatchesDidFinished()} /></li>
                     )}
                 </ul>
             </li>
