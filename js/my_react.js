@@ -183,40 +183,12 @@ class MatchShow extends React.Component {
                 </div>
             </div>
         );
-
-        //MATCHES
-        return (
-            <div className='matchDatas'>
-                <input type='text' value={this.state.match.home.name} readOnly />
-                vs
-                <input type='text' value={this.state.match.away.name} readOnly />
-            </div>
-        );
-
-        //MATCHES WITH SCORE
-        return (
-            <div className='matchDatas'>
-                <input type='text' value={this.state.match.home.name} readOnly />
-                <input className='goalHome' type='text' value={this.state.match.result.home} readOnly />
-                vs
-                    <input className='goalAway' type='text' value={this.state.match.result.away} readOnly />
-                <input type='text' value={this.state.match.away.name} readOnly />
-            </div>
-        );
-
     }
 }
 
 // FOR BRACKETS
 
 class BracketShow extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            // mode: props.mode,
-        }
-        this.rights = 'EDIT';
-    }
     //show whole
     //show only round and arrow to next
     render() {
@@ -226,7 +198,7 @@ class BracketShow extends React.Component {
                 <a>{item.name}</a>
                 <ul>
                     {this.matches = item.matches.map((match, k) =>
-                        <li><MatchShow match={match} rights={this.rights} /></li>
+                        <li><MatchShow match={match} rights={this.props.rights} /></li>
                     )}
                 </ul>
             </li>
@@ -253,7 +225,6 @@ class TournamentShow extends React.Component {
     }
 
     render() {
-        this.rights = this.props.rights;
         this.bracketStages = this.props.tournament.getAvailableStages();
         //STAGE LIST
         this.stages = this.bracketStages.map((item, key) => {
@@ -274,7 +245,7 @@ class TournamentShow extends React.Component {
                     <li><a className={this.buttonClass.join(' ')} onClick={() => { this.setState({ stageFiltered: this.props.tournament.bracketFilter(this.bracket, 0), mode: 0 }) }}>ALL</a></li>
                     {this.stages}
                 </ul>
-                <BracketShow tournament={this.props.tournament} stageFiltered={this.state.stageFiltered} mode={this.state.groupMode} rights={this.state.rights} />
+                <BracketShow tournament={this.props.tournament} stageFiltered={this.state.stageFiltered} mode={this.state.groupMode} rights={this.props.rights} />
             </div>
         );
     }
@@ -282,7 +253,6 @@ class TournamentShow extends React.Component {
 
 class ManagerShow extends React.Component {
     tournament = null;
-    rights = 'EDIT';
 
     groupInit() {
         var bracketNo = document.getElementsByName('play_offs')[0].value;
@@ -299,7 +269,7 @@ class ManagerShow extends React.Component {
         this.groupInit();
 
         return (
-            <TournamentShow tournament={this.tournament} rights={this.rights} />
+            <TournamentShow tournament={this.tournament} rights={this.props.rights} />
         );
     }
 }

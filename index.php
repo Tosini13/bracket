@@ -25,7 +25,6 @@
         <label for='revange_group'>Rewanże</label>
         <input type="checkbox" name="revange_bracket" style='width: 30px'>
         <a class="button mobileWholeWidth" href='#' onclick="createGroup('EDIT')">Dalej</a>
-        <!-- <a class="button mobileWholeWidth" href='#' onclick="stratBracket()">Dalej</a> -->
     </section>
 
     <section id='dashboardGroups'>

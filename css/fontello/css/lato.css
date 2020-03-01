@@ -1,11 +1,11 @@
 @font-face {
   font-family: 'lato';
-  src: url('../font/lato.eot?47127552');
-  src: url('../font/lato.eot?47127552#iefix') format('embedded-opentype'),
-       url('../font/lato.woff2?47127552') format('woff2'),
-       url('../font/lato.woff?47127552') format('woff'),
-       url('../font/lato.ttf?47127552') format('truetype'),
-       url('../font/lato.svg?47127552#lato') format('svg');
+  src: url('../font/lato.eot?6300721');
+  src: url('../font/lato.eot?6300721#iefix') format('embedded-opentype'),
+       url('../font/lato.woff2?6300721') format('woff2'),
+       url('../font/lato.woff?6300721') format('woff'),
+       url('../font/lato.ttf?6300721') format('truetype'),
+       url('../font/lato.svg?6300721#lato') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -15,7 +15,7 @@
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: 'lato';
-    src: url('../font/lato.svg?47127552#lato') format('svg');
+    src: url('../font/lato.svg?6300721#lato') format('svg');
   }
 }
 */
@@ -62,4 +62,6 @@
 .icon-trash-empty:before { content: '\e804'; } /* '' */
 .icon-cancel-circled:before { content: '\e805'; } /* '' */
 .icon-pencil:before { content: '\e806'; } /* '' */
+.icon-ok:before { content: '\e807'; } /* '' */
+.icon-menu:before { content: '\f0c9'; } /* '' */
 .icon-soccer-ball:before { content: '\f1e3'; } /* '' */

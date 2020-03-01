@@ -55,6 +55,18 @@
       "src": "fontawesome"
     },
     {
+      "uid": "559647a6f430b3aeadbecd67194451dd",
+      "css": "menu",
+      "code": 61641,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "12f4ece88e46abd864e40b35e05b11cd",
+      "css": "ok",
+      "code": 59399,
+      "src": "fontawesome"
+    },
+    {
       "uid": "b37eb2f63849cf204fd5aecc1c48e604",
       "css": "ico_search",
       "code": 59393,
