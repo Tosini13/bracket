@@ -113,7 +113,6 @@ class Tournament {
     showWinnerBracket(higher) {  //pass final previous stage at first!
         let arr = [];
         arr.push(higher);
-        //console.log(higher.name + ': ' + higher.matches[0].home.name + ' vs ' + higher.matches[0].away.name);
         if (typeof higher.previousStage['home'] !== 'undefined') {
             arr = arr.concat(this.showWinnerBracket(higher.previousStage['home']));
         }
@@ -134,27 +133,15 @@ class Bracket {
     lastMatchesDidFinished() {
         let finished = true;
         if (typeof this.previousStage['home'] !== 'undefined' && typeof this.previousStage['away'] !== 'undefined') {
-            console.log('this match: ' + this.name + ' = ' + this.matches[0].home.name + ' - ' + this.matches[0].away.name + ' mode: ' + this.mode);
-            console.log(this.previousStage['home'].matches);
-            // console.log(this.previousStage['home'].matches[0].home.mode);
-            // console.log(this.previousStage['home'].matches[0].mode);
-
             for (let key in this.previousStage) {
-                console.log('previousStage: ' + this.previousStage[key].name);
                 for (let match of this.previousStage[key].matches) {
-                    console.log(match);
-                    console.log('match: ' + match.home.name + ' - ' + match.away.name + ' mode: ' + match.mode);
                     if (match.mode != 2) {
                         finished = false;
-                        console.log('Nie zaliczone:');
-                    } else {
-                        console.log('Zaliczone:');
                     }
-                    console.log(': ' + match.mode);
                 }
             }
         } else {
-            console.log('Nie ma poprzednich meczów');
+            // console.log('Nie ma poprzednich meczów');
             return true;
         }
 
@@ -193,7 +180,7 @@ class Match {
 
     endMatch() {
         if (this.mode == 0) {
-            alert('ten mecz jeszcze się nie rozpoczął!');
+            console.log('ten mecz jeszcze się nie rozpoczął!');
         } else {
             this.mode = 2;
         }

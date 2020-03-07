@@ -179,11 +179,11 @@ class MatchShow extends React.Component {
             <div className={modeClass}>
                 {this.piece}
                 <div className='matchDatas'>
-                    <TeamShow team={this.state.match.home} rights={false} />
+                    <TeamShow team={this.state.match.home} rights={this.props.teamRights} />
                     <input className='goalHome goal' type='text' value={this.state.match.result.home} ref={this.goalHome} readOnly />
                     <i className='versus'>vs</i>
                     <input className='goalAway goal' type='text' value={this.state.match.result.away} ref={this.goalAway} readOnly />
-                    <TeamShow team={this.state.match.away} rights={false} />
+                    <TeamShow team={this.state.match.away} rights={this.props.teamRights} />
                 </div>
             </div>
         );
@@ -204,7 +204,7 @@ class BracketShow extends React.Component {
                 <a>{item.name}</a>
                 <ul>
                     {this.matches = item.matches.map((match, k) =>
-                        <li><MatchShow match={match} rights={this.props.rights} prevFinished={item.lastMatchesDidFinished()} /></li>
+                        <li><MatchShow match={match} rights={this.props.rights} teamRights={this.props.teamRights} prevFinished={item.lastMatchesDidFinished()} /></li>
                     )}
                 </ul>
             </li>
@@ -244,6 +244,10 @@ class TournamentShow extends React.Component {
         if (parseInt(this.state.mode) == 0) {
             this.buttonClass.push('clickedButton');
         }
+        var rights = false;
+        if (this.state.mode == parseInt(this.props.tournament.firstRound)) {
+            rights = this.props.rights;
+        }
         return (
             <div className="group">
                 <h2>{this.props.tournament.name}</h2>
@@ -251,7 +255,7 @@ class TournamentShow extends React.Component {
                     <li><a className={this.buttonClass.join(' ')} onClick={() => { this.setState({ stageFiltered: this.props.tournament.bracketFilter(this.bracket, 0), mode: 0 }) }}>ALL</a></li>
                     {this.stages}
                 </ul>
-                <BracketShow tournament={this.props.tournament} stageFiltered={this.state.stageFiltered} mode={this.state.groupMode} rights={this.props.rights} />
+                <BracketShow tournament={this.props.tournament} stageFiltered={this.state.stageFiltered} mode={this.state.groupMode} rights={this.props.rights} teamRights={rights} />
             </div>
         );
     }
